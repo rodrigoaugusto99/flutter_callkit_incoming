@@ -19,6 +19,7 @@ import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Button
 import com.hiennv.flutter_callkit_incoming.widgets.RippleRelativeLayout
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlin.math.abs
@@ -68,15 +69,15 @@ class CallkitIncomingActivity : Activity() {
 
     private lateinit var tvNameCaller: TextView
     private lateinit var tvNumber: TextView
+    private lateinit var tvPickupAddress: TextView
+    private lateinit var tvDeliveryAddress: TextView
+    private lateinit var tvEstimatedTime: TextView
     private lateinit var ivLogo: ImageView
     private lateinit var ivAvatar: CircleImageView
 
     private lateinit var llAction: LinearLayout
-    private lateinit var ivAcceptCall: ImageView
-    private lateinit var tvAccept: TextView
-
-    private lateinit var ivDeclineCall: ImageView
-    private lateinit var tvDecline: TextView
+    private lateinit var btnAccept: Button
+    private lateinit var btnDecline: Button
 
     @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -184,6 +185,24 @@ class CallkitIncomingActivity : Activity() {
         } catch (error: Exception) {
         }
 
+        val pickupAddress = data?.getString("pickupAddress", "")
+        if (!pickupAddress.isNullOrEmpty()) {
+            tvPickupAddress.text = "Coleta: $pickupAddress"
+            tvPickupAddress.visibility = View.VISIBLE
+        }
+
+        val deliveryAddress = data?.getString("deliveryAddress", "")
+        if (!deliveryAddress.isNullOrEmpty()) {
+            tvDeliveryAddress.text = "Entrega: $deliveryAddress"
+            tvDeliveryAddress.visibility = View.VISIBLE
+        }
+
+        val estimatedTime = data?.getString("estimatedTime", "")
+        if (!estimatedTime.isNullOrEmpty()) {
+            tvEstimatedTime.text = "Tempo estimado: $estimatedTime"
+            tvEstimatedTime.visibility = View.VISIBLE
+        }
+
         val isShowLogo = data?.getBoolean(CallkitConstants.EXTRA_CALLKIT_IS_SHOW_LOGO, false)
         ivLogo.visibility = if (isShowLogo == true) View.VISIBLE else View.INVISIBLE
         var logoUrl = data?.getString(CallkitConstants.EXTRA_CALLKIT_LOGO_URL, "")
@@ -207,27 +226,10 @@ class CallkitIncomingActivity : Activity() {
             ImageLoaderProvider.loadImage(this@CallkitIncomingActivity, avatarUrl, headers, R.drawable.ic_default_avatar, ivAvatar)
         }
 
-        val callType = data?.getInt(CallkitConstants.EXTRA_CALLKIT_TYPE, 0) ?: 0
-        if (callType > 0) {
-            ivAcceptCall.setImageResource(R.drawable.ic_video)
-        }
         val duration = data?.getLong(CallkitConstants.EXTRA_CALLKIT_DURATION, 0L) ?: 0L
         wakeLockRequest(duration)
 
         finishTimeout(data, duration)
-
-        val textAccept = data?.getString(CallkitConstants.EXTRA_CALLKIT_TEXT_ACCEPT, "")
-        tvAccept.text =
-            if (TextUtils.isEmpty(textAccept)) getString(R.string.text_accept) else textAccept
-        val textDecline = data?.getString(CallkitConstants.EXTRA_CALLKIT_TEXT_DECLINE, "")
-        tvDecline.text =
-            if (TextUtils.isEmpty(textDecline)) getString(R.string.text_decline) else textDecline
-
-        try {
-            tvAccept.setTextColor(Color.parseColor(textColor))
-            tvDecline.setTextColor(Color.parseColor(textColor))
-        } catch (error: Exception) {
-        }
 
         val backgroundColor =
             data?.getString(CallkitConstants.EXTRA_CALLKIT_BACKGROUND_COLOR, "#0955fa")
@@ -274,6 +276,9 @@ class CallkitIncomingActivity : Activity() {
 
         tvNameCaller = findViewById(R.id.tvNameCaller)
         tvNumber = findViewById(R.id.tvNumber)
+        tvPickupAddress = findViewById(R.id.tvPickupAddress)
+        tvDeliveryAddress = findViewById(R.id.tvDeliveryAddress)
+        tvEstimatedTime = findViewById(R.id.tvEstimatedTime)
         ivLogo = findViewById(R.id.ivLogo)
         ivAvatar = findViewById(R.id.ivAvatar)
 
@@ -283,24 +288,15 @@ class CallkitIncomingActivity : Activity() {
         params.setMargins(0, 0, 0, Utils.getNavigationBarHeight(this@CallkitIncomingActivity))
         llAction.layoutParams = params
 
-        ivAcceptCall = findViewById(R.id.ivAcceptCall)
-        tvAccept = findViewById(R.id.tvAccept)
-        ivDeclineCall = findViewById(R.id.ivDeclineCall)
-        tvDecline = findViewById(R.id.tvDecline)
-        animateAcceptCall()
+        btnAccept = findViewById(R.id.btnAccept)
+        btnDecline = findViewById(R.id.btnDecline)
 
-        ivAcceptCall.setOnClickListener {
+        btnAccept.setOnClickListener {
             onAcceptClick()
         }
-        ivDeclineCall.setOnClickListener {
+        btnDecline.setOnClickListener {
             onDeclineClick()
         }
-    }
-
-    private fun animateAcceptCall() {
-        val shakeAnimation =
-            AnimationUtils.loadAnimation(this@CallkitIncomingActivity, R.anim.shake_anim)
-        ivAcceptCall.animation = shakeAnimation
     }
 
 
