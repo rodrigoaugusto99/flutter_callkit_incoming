@@ -185,19 +185,21 @@ class CallkitIncomingActivity : Activity() {
         } catch (error: Exception) {
         }
 
-        val pickupAddress = data?.getString("pickupAddress", "")
+        val extra = data?.getSerializable(CallkitConstants.EXTRA_CALLKIT_EXTRA) as? HashMap<String, Any?>
+        
+        val pickupAddress = extra?.get("pickupAddress") as? String
         if (!pickupAddress.isNullOrEmpty()) {
             tvPickupAddress.text = "Coleta: $pickupAddress"
             tvPickupAddress.visibility = View.VISIBLE
         }
 
-        val deliveryAddress = data?.getString("deliveryAddress", "")
+        val deliveryAddress = extra?.get("deliveryAddress") as? String
         if (!deliveryAddress.isNullOrEmpty()) {
             tvDeliveryAddress.text = "Entrega: $deliveryAddress"
             tvDeliveryAddress.visibility = View.VISIBLE
         }
 
-        val estimatedTime = data?.getString("estimatedTime", "")
+        val estimatedTime = extra?.get("estimatedTime") as? String
         if (!estimatedTime.isNullOrEmpty()) {
             tvEstimatedTime.text = "Tempo estimado: $estimatedTime"
             tvEstimatedTime.visibility = View.VISIBLE
