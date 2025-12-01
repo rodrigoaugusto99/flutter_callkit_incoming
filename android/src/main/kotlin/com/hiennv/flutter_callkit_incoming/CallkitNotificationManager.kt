@@ -959,7 +959,15 @@ class CallkitNotificationManager(
     }
 
     private fun getActivityPendingIntent(id: Int, data: Bundle): PendingIntent {
-        val intent = CallkitIncomingActivity.getIntent(context, data)
+        val extra = data.getSerializable(CallkitConstants.EXTRA_CALLKIT_EXTRA) as? HashMap<String, Any?>
+        val hasDeliveryData = extra?.containsKey("pickupAddress") == true || 
+                              extra?.containsKey("deliveryAddress") == true
+        
+        val intent = if (hasDeliveryData) {
+            DeliveryCallActivity.getIntent(context, data)
+        } else {
+            CallkitIncomingActivity.getIntent(context, data)
+        }
         return PendingIntent.getActivity(context, id, intent, getFlagPendingIntent())
     }
 
