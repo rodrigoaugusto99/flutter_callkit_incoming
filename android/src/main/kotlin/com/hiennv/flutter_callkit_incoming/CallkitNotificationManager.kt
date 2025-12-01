@@ -960,12 +960,18 @@ class CallkitNotificationManager(
 
     private fun getActivityPendingIntent(id: Int, data: Bundle): PendingIntent {
         val extra = data.getSerializable(CallkitConstants.EXTRA_CALLKIT_EXTRA) as? HashMap<String, Any?>
+        android.util.Log.d("CallkitNotification", "Extra in getActivityPendingIntent: $extra")
+        
         val hasDeliveryData = extra?.containsKey("pickupAddress") == true || 
                               extra?.containsKey("deliveryAddress") == true
         
+        android.util.Log.d("CallkitNotification", "Has delivery data: $hasDeliveryData")
+        
         val intent = if (hasDeliveryData) {
+            android.util.Log.d("CallkitNotification", "Using DeliveryCallActivity")
             DeliveryCallActivity.getIntent(context, data)
         } else {
+            android.util.Log.d("CallkitNotification", "Using CallkitIncomingActivity")
             CallkitIncomingActivity.getIntent(context, data)
         }
         return PendingIntent.getActivity(context, id, intent, getFlagPendingIntent())

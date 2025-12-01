@@ -25,8 +25,7 @@ class DeliveryCallActivity : Activity() {
             "com.hiennv.flutter_callkit_incoming.ACTION_ENDED_CALL_INCOMING"
 
         fun getIntent(context: Context, data: Bundle) =
-            Intent(CallkitConstants.ACTION_CALL_INCOMING).apply {
-                action = "${context.packageName}.${CallkitConstants.ACTION_CALL_INCOMING}"
+            Intent(context, DeliveryCallActivity::class.java).apply {
                 putExtra(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA, data)
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK
             }
@@ -131,29 +130,37 @@ class DeliveryCallActivity : Activity() {
     private fun incomingData(intent: Intent) {
         val data = intent.extras?.getBundle(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA)
         if (data == null) {
+            android.util.Log.d("DeliveryCallActivity", "Data is NULL!")
             finish()
             return
         }
 
         val extra = data.getSerializable(CallkitConstants.EXTRA_CALLKIT_EXTRA) as? HashMap<String, Any?>
+        android.util.Log.d("DeliveryCallActivity", "Extra data: $extra")
 
         val appName = data.getString(CallkitConstants.EXTRA_CALLKIT_APP_NAME, "App")
         tvAppName.text = appName
+        android.util.Log.d("DeliveryCallActivity", "App name: $appName")
 
         val pickupAddress = extra?.get("pickupAddress") as? String ?: "Endereço não informado"
         tvPickupAddress.text = pickupAddress
+        android.util.Log.d("DeliveryCallActivity", "Pickup: $pickupAddress")
 
         val deliveryAddress = extra?.get("deliveryAddress") as? String ?: "Endereço não informado"
         tvDeliveryAddress.text = deliveryAddress
+        android.util.Log.d("DeliveryCallActivity", "Delivery: $deliveryAddress")
 
         val estimatedTime = extra?.get("estimatedTime") as? String ?: "Não informado"
         tvEstimatedTime.text = estimatedTime
+        android.util.Log.d("DeliveryCallActivity", "Time: $estimatedTime")
 
         val acceptText = extra?.get("acceptText") as? String ?: "Aceitar"
         btnAccept.text = acceptText
+        android.util.Log.d("DeliveryCallActivity", "Accept text: $acceptText")
 
         val declineText = extra?.get("declineText") as? String ?: "Rejeitar"
         btnDecline.text = declineText
+        android.util.Log.d("DeliveryCallActivity", "Decline text: $declineText")
 
         val duration = data.getLong(CallkitConstants.EXTRA_CALLKIT_DURATION, 30000L)
         finishTimeout(data, duration)
