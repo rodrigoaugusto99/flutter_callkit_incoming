@@ -215,8 +215,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginBottom="24dp"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
             android:fitsSystemWindows="true"
             android:orientation="horizontal">
 
