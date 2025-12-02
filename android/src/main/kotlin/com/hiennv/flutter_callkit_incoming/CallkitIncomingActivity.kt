@@ -77,10 +77,10 @@ class CallkitIncomingActivity : Activity() {
     private lateinit var tvTimeToDelivery: TextView
 
     private lateinit var llAction: LinearLayout
-    private lateinit var ivAcceptCall: ImageView
+    private lateinit var ivAcceptCall: TextView
     private lateinit var tvAccept: TextView
 
-    private lateinit var ivDeclineCall: ImageView
+    private lateinit var ivDeclineCall: TextView
     private lateinit var tvDecline: TextView
 
     @Suppress("DEPRECATION")
@@ -225,26 +225,17 @@ class CallkitIncomingActivity : Activity() {
         }
 
         val callType = data?.getInt(CallkitConstants.EXTRA_CALLKIT_TYPE, 0) ?: 0
-        if (callType > 0) {
-            ivAcceptCall.setImageResource(R.drawable.ic_video)
-        }
         val duration = data?.getLong(CallkitConstants.EXTRA_CALLKIT_DURATION, 0L) ?: 0L
         wakeLockRequest(duration)
 
         finishTimeout(data, duration)
 
         val textAccept = data?.getString(CallkitConstants.EXTRA_CALLKIT_TEXT_ACCEPT, "")
-        tvAccept.text =
+        ivAcceptCall.text =
             if (TextUtils.isEmpty(textAccept)) getString(R.string.text_accept) else textAccept
         val textDecline = data?.getString(CallkitConstants.EXTRA_CALLKIT_TEXT_DECLINE, "")
-        tvDecline.text =
+        ivDeclineCall.text =
             if (TextUtils.isEmpty(textDecline)) getString(R.string.text_decline) else textDecline
-
-        try {
-            tvAccept.setTextColor(Color.parseColor(textColor))
-            tvDecline.setTextColor(Color.parseColor(textColor))
-        } catch (error: Exception) {
-        }
 
         val backgroundColor =
             data?.getString(CallkitConstants.EXTRA_CALLKIT_BACKGROUND_COLOR, "#0955fa")
@@ -320,9 +311,7 @@ class CallkitIncomingActivity : Activity() {
     }
 
     private fun animateAcceptCall() {
-        val shakeAnimation =
-            AnimationUtils.loadAnimation(this@CallkitIncomingActivity, R.anim.shake_anim)
-        ivAcceptCall.animation = shakeAnimation
+        // Animação removida para o novo estilo de botão
     }
 
 
