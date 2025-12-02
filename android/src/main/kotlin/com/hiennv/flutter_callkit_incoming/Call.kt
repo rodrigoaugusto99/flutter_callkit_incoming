@@ -39,6 +39,15 @@ data class Data(val args: Map<String, Any?>) {
 
     @JsonProperty("textDecline")
     var textDecline: String = (args["textDecline"] as? String) ?: ""
+    
+    @JsonProperty("collectionAddress")
+    var collectionAddress: String = (args["collectionAddress"] as? String) ?: ""
+    
+    @JsonProperty("deliveryAddress")
+    var deliveryAddress: String = (args["deliveryAddress"] as? String) ?: ""
+    
+    @JsonProperty("timeToDelivery")
+    var timeToDelivery: String = (args["timeToDelivery"] as? String) ?: ""
 
     @JsonProperty("extra")
     var extra: HashMap<String, Any?> =
@@ -219,6 +228,9 @@ data class Data(val args: Map<String, Any?>) {
         bundle.putLong(CallkitConstants.EXTRA_CALLKIT_DURATION, duration)
         bundle.putString(CallkitConstants.EXTRA_CALLKIT_TEXT_ACCEPT, textAccept)
         bundle.putString(CallkitConstants.EXTRA_CALLKIT_TEXT_DECLINE, textDecline)
+        bundle.putString(CallkitConstants.EXTRA_CALLKIT_COLLECTION_ADDRESS, collectionAddress)
+        bundle.putString(CallkitConstants.EXTRA_CALLKIT_DELIVERY_ADDRESS, deliveryAddress)
+        bundle.putString(CallkitConstants.EXTRA_CALLKIT_TIME_TO_DELIVERY, timeToDelivery)
 
         missedNotificationId?.let {
             bundle.putInt(

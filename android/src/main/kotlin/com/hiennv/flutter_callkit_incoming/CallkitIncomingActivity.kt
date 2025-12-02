@@ -70,6 +70,11 @@ class CallkitIncomingActivity : Activity() {
     private lateinit var tvNumber: TextView
     private lateinit var ivLogo: ImageView
     private lateinit var ivAvatar: CircleImageView
+    
+    private lateinit var llDeliveryInfo: LinearLayout
+    private lateinit var tvCollectionAddress: TextView
+    private lateinit var tvDeliveryAddress: TextView
+    private lateinit var tvTimeToDelivery: TextView
 
     private lateinit var llAction: LinearLayout
     private lateinit var ivAcceptCall: ImageView
@@ -183,6 +188,18 @@ class CallkitIncomingActivity : Activity() {
             tvNumber.setTextColor(Color.parseColor(textColor))
         } catch (error: Exception) {
         }
+        
+        val collectionAddress = data?.getString(CallkitConstants.EXTRA_CALLKIT_COLLECTION_ADDRESS, "")
+        val deliveryAddress = data?.getString(CallkitConstants.EXTRA_CALLKIT_DELIVERY_ADDRESS, "")
+        val timeToDelivery = data?.getString(CallkitConstants.EXTRA_CALLKIT_TIME_TO_DELIVERY, "")
+        
+        if (!collectionAddress.isNullOrEmpty() || !deliveryAddress.isNullOrEmpty() || !timeToDelivery.isNullOrEmpty()) {
+            llDeliveryInfo.visibility = View.VISIBLE
+            
+            tvCollectionAddress.text = if (!collectionAddress.isNullOrEmpty()) collectionAddress else "-"
+            tvDeliveryAddress.text = if (!deliveryAddress.isNullOrEmpty()) deliveryAddress else "-"
+            tvTimeToDelivery.text = if (!timeToDelivery.isNullOrEmpty()) timeToDelivery else "-"
+        }
 
         val isShowLogo = data?.getBoolean(CallkitConstants.EXTRA_CALLKIT_IS_SHOW_LOGO, false)
         ivLogo.visibility = if (isShowLogo == true) View.VISIBLE else View.INVISIBLE
@@ -276,6 +293,11 @@ class CallkitIncomingActivity : Activity() {
         tvNumber = findViewById(R.id.tvNumber)
         ivLogo = findViewById(R.id.ivLogo)
         ivAvatar = findViewById(R.id.ivAvatar)
+        
+        llDeliveryInfo = findViewById(R.id.llDeliveryInfo)
+        tvCollectionAddress = findViewById(R.id.tvCollectionAddress)
+        tvDeliveryAddress = findViewById(R.id.tvDeliveryAddress)
+        tvTimeToDelivery = findViewById(R.id.tvTimeToDelivery)
 
         llAction = findViewById(R.id.llAction)
 
