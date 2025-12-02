@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
-    android:color="@color/decline_ripple">
+    android:color="#80FBB821">
     <item>
-        <shape android:shape="oval">
-            <solid android:color="@color/decline"/>
+        <shape android:shape="rectangle">
+            <corners android:radius="100dp" />
+            <stroke
+                android:width="1dp"
+                android:color="#FBB821" />
+            <solid android:color="@android:color/transparent" />
         </shape>
     </item>
 </ripple>
