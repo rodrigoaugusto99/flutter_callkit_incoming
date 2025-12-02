@@ -75,6 +75,7 @@ class CallkitIncomingActivity : Activity() {
     private lateinit var tvCollectionAddress: TextView
     private lateinit var tvDeliveryAddress: TextView
     private lateinit var tvTimeToDelivery: TextView
+    private lateinit var tvDistance: TextView
 
     private lateinit var llAction: LinearLayout
     private lateinit var ivAcceptCall: TextView
@@ -192,13 +193,15 @@ class CallkitIncomingActivity : Activity() {
         val collectionAddress = data?.getString(CallkitConstants.EXTRA_CALLKIT_COLLECTION_ADDRESS, "")
         val deliveryAddress = data?.getString(CallkitConstants.EXTRA_CALLKIT_DELIVERY_ADDRESS, "")
         val timeToDelivery = data?.getString(CallkitConstants.EXTRA_CALLKIT_TIME_TO_DELIVERY, "")
+        val distance = data?.getString(CallkitConstants.EXTRA_CALLKIT_DISTANCE, "")
         
-        if (!collectionAddress.isNullOrEmpty() || !deliveryAddress.isNullOrEmpty() || !timeToDelivery.isNullOrEmpty()) {
+        if (!collectionAddress.isNullOrEmpty() || !deliveryAddress.isNullOrEmpty() || !timeToDelivery.isNullOrEmpty() || !distance.isNullOrEmpty()) {
             llDeliveryInfo.visibility = View.VISIBLE
             
             tvCollectionAddress.text = if (!collectionAddress.isNullOrEmpty()) collectionAddress else "-"
             tvDeliveryAddress.text = if (!deliveryAddress.isNullOrEmpty()) deliveryAddress else "-"
             tvTimeToDelivery.text = if (!timeToDelivery.isNullOrEmpty()) timeToDelivery else "-"
+            tvDistance.text = if (!distance.isNullOrEmpty()) distance else "-"
         }
 
         val isShowLogo = data?.getBoolean(CallkitConstants.EXTRA_CALLKIT_IS_SHOW_LOGO, false)
@@ -289,6 +292,7 @@ class CallkitIncomingActivity : Activity() {
         tvCollectionAddress = findViewById(R.id.tvCollectionAddress)
         tvDeliveryAddress = findViewById(R.id.tvDeliveryAddress)
         tvTimeToDelivery = findViewById(R.id.tvTimeToDelivery)
+        tvDistance = findViewById(R.id.tvDistance)
 
         llAction = findViewById(R.id.llAction)
 

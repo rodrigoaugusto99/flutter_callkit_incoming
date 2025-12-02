@@ -29,6 +29,7 @@ class CallKitParams {
     this.collectionAddress,
     this.deliveryAddress,
     this.timeToDelivery,
+    this.distance,
   });
 
   final String? id;
@@ -50,6 +51,7 @@ class CallKitParams {
   final String? collectionAddress;
   final String? deliveryAddress;
   final String? timeToDelivery;
+  final String? distance;
 
   factory CallKitParams.fromJson(Map<String, dynamic> json) =>
       _$CallKitParamsFromJson(json);

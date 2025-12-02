@@ -48,6 +48,9 @@ data class Data(val args: Map<String, Any?>) {
     
     @JsonProperty("timeToDelivery")
     var timeToDelivery: String = (args["timeToDelivery"] as? String) ?: ""
+    
+    @JsonProperty("distance")
+    var distance: String = (args["distance"] as? String) ?: ""
 
     @JsonProperty("extra")
     var extra: HashMap<String, Any?> =
@@ -231,6 +234,7 @@ data class Data(val args: Map<String, Any?>) {
         bundle.putString(CallkitConstants.EXTRA_CALLKIT_COLLECTION_ADDRESS, collectionAddress)
         bundle.putString(CallkitConstants.EXTRA_CALLKIT_DELIVERY_ADDRESS, deliveryAddress)
         bundle.putString(CallkitConstants.EXTRA_CALLKIT_TIME_TO_DELIVERY, timeToDelivery)
+        bundle.putString(CallkitConstants.EXTRA_CALLKIT_DISTANCE, distance)
 
         missedNotificationId?.let {
             bundle.putInt(
@@ -360,6 +364,14 @@ data class Data(val args: Map<String, Any?>) {
                 bundle.getString(CallkitConstants.EXTRA_CALLKIT_TEXT_ACCEPT, "")
             data.textDecline =
                 bundle.getString(CallkitConstants.EXTRA_CALLKIT_TEXT_DECLINE, "")
+            data.collectionAddress =
+                bundle.getString(CallkitConstants.EXTRA_CALLKIT_COLLECTION_ADDRESS, "")
+            data.deliveryAddress =
+                bundle.getString(CallkitConstants.EXTRA_CALLKIT_DELIVERY_ADDRESS, "")
+            data.timeToDelivery =
+                bundle.getString(CallkitConstants.EXTRA_CALLKIT_TIME_TO_DELIVERY, "")
+            data.distance =
+                bundle.getString(CallkitConstants.EXTRA_CALLKIT_DISTANCE, "")
             data.isImportant =
                 bundle.getBoolean(CallkitConstants.EXTRA_CALLKIT_IS_IMPORTANT, false)
             data.isBot =

@@ -21,6 +21,7 @@ CallKitParams _$CallKitParamsFromJson(Map<String, dynamic> json) =>
       collectionAddress: json['collectionAddress'] as String?,
       deliveryAddress: json['deliveryAddress'] as String?,
       timeToDelivery: json['timeToDelivery'] as String?,
+      distance: json['distance'] as String?,
       callingNotification: json['callingNotification'] == null
           ? null
           : NotificationParams.fromJson(
@@ -60,4 +61,5 @@ Map<String, dynamic> _$CallKitParamsToJson(CallKitParams instance) =>
       'collectionAddress': instance.collectionAddress,
       'deliveryAddress': instance.deliveryAddress,
       'timeToDelivery': instance.timeToDelivery,
+      'distance': instance.distance,
     };
