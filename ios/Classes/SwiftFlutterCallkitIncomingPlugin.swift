@@ -768,32 +768,8 @@ public class SwiftFlutterCallkitIncomingPlugin: NSObject, FlutterPlugin, CXProvi
     
     
     private func showMissedCallNotification(_ data: Data) {
-        if(!data.isShowMissedCallNotification){
-            return
-        }
-        
-        let content = UNMutableNotificationContent()
-        content.title = "\(data.nameCaller)"
-        content.body = "\(data.missedNotificationSubtitle)"
-        content.sound = UNNotificationSound.default
-        content.categoryIdentifier = "MISSED_CALL_CATEGORY"
-        content.userInfo = data.toJSON()
-
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-
-        let request = UNNotificationRequest(
-            identifier: data.uuid,
-            content: content,
-            trigger: trigger
-        )
-
-        UNUserNotificationCenter.current().add(request) { error in
-            if let error = error {
-                print("Error scheduling missed call notification: \(error)")
-            } else {
-                print("Missed call notification scheduled.")
-            }
-        }
+        // Missed call notification disabled
+        return
     }
     
 }
