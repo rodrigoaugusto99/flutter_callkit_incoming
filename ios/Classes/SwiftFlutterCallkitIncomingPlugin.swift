@@ -599,6 +599,11 @@ public class SwiftFlutterCallkitIncomingPlugin: NSObject, FlutterPlugin, CXProvi
         }
         self.data?.isAccepted = true
         self.answerCall = call
+        
+        if let offerId = self.data?.extra["offerId"] as? String {
+            UserDefaults.standard.set(true, forKey: "flutter.offerId_\(offerId)")
+        }
+        
         sendEvent(SwiftFlutterCallkitIncomingPlugin.ACTION_CALL_ACCEPT, self.data?.toJSON())
         if let appDelegate = UIApplication.shared.delegate as? CallkitIncomingAppDelegate {
             appDelegate.onAccept(call, action)
@@ -633,6 +638,10 @@ public class SwiftFlutterCallkitIncomingPlugin: NSObject, FlutterPlugin, CXProvi
         call.endCall()
         self.callManager.removeCall(call)
         if (self.answerCall == nil && self.outgoingCall == nil) {
+            if let offerId = self.data?.extra["offerId"] as? String {
+                UserDefaults.standard.set(false, forKey: "flutter.offerId_\(offerId)")
+            }
+            
             sendEvent(SwiftFlutterCallkitIncomingPlugin.ACTION_CALL_DECLINE, self.data?.toJSON())
             if let appDelegate = UIApplication.shared.delegate as? CallkitIncomingAppDelegate {
                 appDelegate.onDecline(call, action)
