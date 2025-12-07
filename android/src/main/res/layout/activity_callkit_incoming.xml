@@ -32,14 +32,16 @@
 
             <ImageView
                 android:id="@+id/ivLogo"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/base_margin_x2_5"
-                android:layout_above="@id/ivAvatar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:adjustViewBounds="true"
-                android:visibility="invisible"
+                android:visibility="visible"
                 android:scaleType="fitCenter"
-                android:layout_marginBottom="@dimen/base_margin_x5"
+                android:layout_marginTop="112dp"
+                android:layout_marginStart="112dp"
+                android:layout_marginEnd="112dp"
                 android:src="@drawable/ic_logo"
                 tools:ignore="ContentDescription" />
 
@@ -108,98 +110,105 @@
             android:padding="20dp"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
+            android:layout_marginTop="32dp"
             android:background="@android:color/white"
             android:visibility="gone">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="COLETA"
-                android:textColor="#666666"
-                android:textSize="11sp"
-                android:textStyle="bold" />
+                android:text="Coleta"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/maven_pro_bold" />
 
             <TextView
                 android:id="@+id/tvCollectionAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:textColor="@android:color/black"
-                android:textSize="15sp"
+                android:layout_marginTop="8dp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:fontFamily="@font/maven_pro"
                 tools:text="Endereço de coleta" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
                 android:background="#EEEEEE" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ENTREGA"
-                android:textColor="#666666"
-                android:textSize="11sp"
-                android:textStyle="bold" />
+                android:text="Entrega"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/maven_pro_bold" />
 
             <TextView
                 android:id="@+id/tvDeliveryAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:textColor="@android:color/black"
-                android:textSize="15sp"
+                android:layout_marginTop="8dp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:fontFamily="@font/maven_pro"
                 tools:text="Endereço de entrega" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
                 android:background="#EEEEEE" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TEMPO ESTIMADO"
-                android:textColor="#666666"
-                android:textSize="11sp"
-                android:textStyle="bold" />
+                android:text="Tempo estimado"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/maven_pro_bold" />
 
             <TextView
                 android:id="@+id/tvTimeToDelivery"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:fontFamily="@font/maven_pro"
                 tools:text="25 minutos" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
                 android:background="#EEEEEE" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="DISTÂNCIA"
-                android:textColor="#666666"
-                android:textSize="11sp"
-                android:textStyle="bold" />
+                android:text="Distância"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/maven_pro_bold" />
 
             <TextView
                 android:id="@+id/tvDistance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:fontFamily="@font/maven_pro"
                 tools:text="5.2 km" />
 
         </LinearLayout>
@@ -215,7 +224,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="32dp"
+            android:paddingBottom="8dp"
             android:fitsSystemWindows="true"
             android:orientation="horizontal">
 
@@ -232,8 +242,7 @@
                 android:textColor="@color/button_text_decline"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:fontFamily="sans-serif"
-                android:elevation="2dp" />
+                android:fontFamily="sans-serif" />
 
             <TextView
                 android:id="@+id/tvDecline"
@@ -254,8 +263,7 @@
                 android:textColor="@color/button_text_accept"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:fontFamily="sans-serif"
-                android:elevation="2dp" />
+                android:fontFamily="sans-serif" />
 
             <TextView
                 android:id="@+id/tvAccept"
