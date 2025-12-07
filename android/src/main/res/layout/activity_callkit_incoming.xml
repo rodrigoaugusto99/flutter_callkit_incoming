@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <!-- ===== VIEWS NECESSÁRIAS PARA O PLUGIN (ESCONDIDAS) ===== -->
-
+    <!-- Texto do nome / número (plugin usa) -->
     <TextView
         android:id="@+id/tvNameCaller"
         android:layout_width="0dp"
@@ -19,13 +19,14 @@
         android:layout_height="0dp"
         android:visibility="gone" />
 
+    <!-- Avatar (plugin espera CircleImageView) -->
     <de.hdodenhof.circleimageview.CircleImageView
-    android:id="@+id/ivAvatar"
-    android:layout_width="1dp"
-    android:layout_height="1dp"
-    android:visibility="gone" />
+        android:id="@+id/ivAvatar"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:visibility="gone" />
 
-    <!-- versões antigas usam estes IDs nos botões -->
+    <!-- IDs antigos de botões/imagens que podem ser referenciados -->
     <ImageView
         android:id="@+id/ivAccept"
         android:layout_width="0dp"
@@ -38,6 +39,18 @@
         android:layout_height="0dp"
         android:visibility="gone" />
 
+    <!-- TextViews extras que o plugin usa para labels dentro do layout original -->
+    <TextView
+        android:id="@+id/tvAccept"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvDecline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone" />
 
     <!-- ===== SEU LAYOUT PERSONALIZADO ===== -->
 
