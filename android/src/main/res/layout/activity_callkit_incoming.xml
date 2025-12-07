@@ -48,6 +48,8 @@
 
         <!-- COLETA -->
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Coleta"
             android:textColor="#000000"
             android:textSize="16sp"
@@ -73,6 +75,8 @@
 
         <!-- ENTREGA -->
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Entrega"
             android:textColor="#000000"
             android:textSize="16sp"
@@ -98,6 +102,8 @@
 
         <!-- TEMPO -->
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Tempo estimado"
             android:textColor="#000000"
             android:textSize="16sp"
@@ -123,6 +129,8 @@
 
         <!-- DISTÂNCIA -->
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Distância"
             android:textColor="#000000"
             android:textSize="16sp"
