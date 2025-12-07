@@ -1,278 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
+    <!-- FUNDO -->
     <ImageView
         android:id="@+id/ivBackground"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="#0955fa"
         android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- LOGO -->
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/top_entregas_logo"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="48dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="ContentDescription" />
 
-
+    <!-- CARD BRANCO COM DADOS -->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="false"
-        android:orientation="vertical">
+        android:id="@+id/llDeliveryInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        android:padding="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/ivLogo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
+        <!-- COLETA -->
+        <TextView
+            android:text="Coleta"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/maven_pro_bold" />
 
-        <com.hiennv.flutter_callkit_incoming.widgets.RippleRelativeLayout
-            android:id="@+id/llBackgroundAnimation"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/base_margin_revert_x5"
-            android:layout_weight="1"
-            android:fitsSystemWindows="false">
-
-            <ImageView
-                android:id="@+id/ivLogo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:adjustViewBounds="true"
-                android:visibility="visible"
-                android:scaleType="fitCenter"
-                android:layout_marginTop="96dp"
-                android:layout_marginStart="112dp"
-                android:layout_marginEnd="112dp"
-                android:src="@drawable/top_entregas_logo"
-                tools:ignore="ContentDescription" />
-
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/ivAvatar"
-                android:layout_width="@dimen/size_avatar"
-                android:layout_height="@dimen/size_avatar"
-                android:visibility="invisible"
-                android:layout_centerInParent="true"
-                android:src="@drawable/ic_default_avatar"
-                app:civ_border_color="#80ffffff"
-                app:civ_border_width="1dp" />
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/ivAvatar"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/base_margin_x2"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tvNameCaller"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autoSizeMaxTextSize="@dimen/size_text_name"
-                    android:autoSizeMinTextSize="12sp"
-                    android:autoSizeStepGranularity="2sp"
-                    android:autoSizeTextType="uniform"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/size_text_name"
-                    app:autoSizeMaxTextSize="@dimen/size_text_name"
-                    app:autoSizeMinTextSize="12sp"
-                    app:autoSizeStepGranularity="2sp"
-                    app:autoSizeTextType="uniform"
-                    tools:ignore="MissingPrefix"
-                    tools:targetApi="o"
-                    tools:text="Caller Name" />
-
-                <TextView
-                    android:id="@+id/tvNumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:textColor="@color/action_text"
-                    android:textSize="@dimen/size_text_action"
-                    tools:text="Some info" />
-
-            </LinearLayout>
-
-        </com.hiennv.flutter_callkit_incoming.widgets.RippleRelativeLayout>
-
-
-        <LinearLayout
-            android:id="@+id/llDeliveryInfo"
+        <TextView
+            android:id="@+id/tvCollectionAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="20dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginTop="32dp"
-            android:background="@android:color/white"
-            android:visibility="gone">
+            android:layout_marginTop="6dp"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:fontFamily="@font/maven_pro"
+            tools:text="Rua Quintal, 642" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Coleta"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/maven_pro_bold" />
-
-            <TextView
-                android:id="@+id/tvCollectionAddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textColor="#000000"
-                android:textSize="18sp"
-                android:fontFamily="@font/maven_pro"
-                tools:text="Endereço de coleta" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="24dp"
-                android:background="#EEEEEE" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Entrega"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/maven_pro_bold" />
-
-            <TextView
-                android:id="@+id/tvDeliveryAddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textColor="#000000"
-                android:textSize="18sp"
-                android:fontFamily="@font/maven_pro"
-                tools:text="Endereço de entrega" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="24dp"
-                android:background="#EEEEEE" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tempo estimado"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/maven_pro_bold" />
-
-            <TextView
-                android:id="@+id/tvTimeToDelivery"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textColor="#000000"
-                android:textSize="18sp"
-                android:fontFamily="@font/maven_pro"
-                tools:text="25 minutos" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="24dp"
-                android:background="#EEEEEE" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Distância"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/maven_pro_bold" />
-
-            <TextView
-                android:id="@+id/tvDistance"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textColor="#000000"
-                android:textSize="18sp"
-                android:fontFamily="@font/maven_pro"
-                tools:text="5.2 km" />
-
-        </LinearLayout>
-
-        <Space
+        <View
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="#EEEEEE" />
 
-        <LinearLayout
-            android:id="@+id/llAction"
+        <!-- ENTREGA -->
+        <TextView
+            android:text="Entrega"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/maven_pro_bold" />
+
+        <TextView
+            android:id="@+id/tvDeliveryAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="120dp"
-            android:paddingBottom="8dp"
-            android:fitsSystemWindows="true"
-            android:orientation="horizontal">
+            android:layout_marginTop="6dp"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:fontFamily="@font/maven_pro"
+            tools:text="Rua das Flores, 123" />
 
-            <TextView
-                android:id="@+id/ivDeclineCall"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="5dp"
-                android:background="@drawable/bg_button_decline"
-                android:gravity="center"
-                android:text="@string/text_decline"
-                android:textColor="@color/button_text_decline"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="#EEEEEE" />
 
-            <TextView
-                android:id="@+id/tvDecline"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:visibility="gone" />
+        <!-- TEMPO -->
+        <TextView
+            android:text="Tempo estimado"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/maven_pro_bold" />
 
-            <TextView
-                android:id="@+id/ivAcceptCall"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="24dp"
-                android:background="@drawable/bg_button_accept"
-                android:gravity="center"
-                android:text="@string/text_accept"
-                android:textColor="@color/button_text_accept"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif" />
+        <TextView
+            android:id="@+id/tvTimeToDelivery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:fontFamily="@font/maven_pro"
+            tools:text="25 minutos" />
 
-            <TextView
-                android:id="@+id/tvAccept"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:visibility="gone" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="#EEEEEE" />
 
-        </LinearLayout>
+        <!-- DISTÂNCIA -->
+        <TextView
+            android:text="Distância"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/maven_pro_bold" />
 
+        <TextView
+            android:id="@+id/tvDistance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:fontFamily="@font/maven_pro"
+            tools:text="11 km" />
     </LinearLayout>
 
-</RelativeLayout>
+    <!-- BOTÕES -->
+    <LinearLayout
+        android:id="@+id/llAction"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="36dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- REJEITAR -->
+        <TextView
+            android:id="@+id/ivDeclineCall"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_button_decline"
+            android:gravity="center"
+            android:text="Rejeitar"
+            android:textColor="@color/button_text_decline"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <!-- ACEITAR -->
+        <TextView
+            android:id="@+id/ivAcceptCall"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_button_accept"
+            android:gravity="center"
+            android:text="Aceitar"
+            android:textColor="@color/button_text_accept"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
