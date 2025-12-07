@@ -37,7 +37,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:adjustViewBounds="true"
-                android:visibility="visible"
+                android:visibility="invisible"
                 android:scaleType="fitCenter"
                 android:layout_marginTop="112dp"
                 android:layout_marginStart="112dp"
