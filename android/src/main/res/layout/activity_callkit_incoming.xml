@@ -25,9 +25,8 @@
         <com.hiennv.flutter_callkit_incoming.widgets.RippleRelativeLayout
             android:id="@+id/llBackgroundAnimation"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/base_margin_revert_x5"
-            android:layout_weight="1"
             android:fitsSystemWindows="false">
 
             <ImageView
@@ -39,7 +38,7 @@
                 android:adjustViewBounds="true"
                 android:visibility="visible"
                 android:scaleType="fitCenter"
-                android:layout_marginTop="112dp"
+                android:layout_marginTop="72dp"
                 android:layout_marginStart="112dp"
                 android:layout_marginEnd="112dp"
                 android:src="@drawable/top_entregas_logo"
@@ -224,7 +223,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginTop="24dp"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="200dp"
             android:paddingBottom="8dp"
             android:fitsSystemWindows="true"
             android:orientation="horizontal">
