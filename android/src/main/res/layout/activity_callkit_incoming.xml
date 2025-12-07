@@ -17,6 +17,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- ANIMAÇÃO DE FUNDO -->
+    <com.hiennv.flutter_callkit_incoming.widgets.RippleRelativeLayout
+        android:id="@+id/llBackgroundAnimation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <!-- LOGO -->
     <ImageView
         android:id="@+id/ivLogo"
