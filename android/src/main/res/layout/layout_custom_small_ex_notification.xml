@@ -73,8 +73,7 @@
                 android:textColor="@color/button_text_decline"
                 android:textSize="11sp"
                 android:textStyle="bold"
-                android:fontFamily="sans-serif"
-                android:elevation="2dp" />
+                android:fontFamily="sans-serif" />
 
             <TextView
                 android:id="@+id/tvDecline"
@@ -98,8 +97,7 @@
                 android:textColor="@color/button_text_accept"
                 android:textSize="11sp"
                 android:textStyle="bold"
-                android:fontFamily="sans-serif"
-                android:elevation="2dp" />
+                android:fontFamily="sans-serif" />
 
             <TextView
                 android:id="@+id/tvAccept"

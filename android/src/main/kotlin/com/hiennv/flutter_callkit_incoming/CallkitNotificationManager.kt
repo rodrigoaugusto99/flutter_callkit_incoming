@@ -200,7 +200,7 @@ class CallkitNotificationManager(
             smallIcon = R.drawable.ic_video
         } else {
             if (smallIcon >= 0) {
-                smallIcon = R.drawable.ic_accept
+                smallIcon = R.drawable.ic_notification_logo
             }
         }
         notificationBuilder?.setSmallIcon(smallIcon)
@@ -618,7 +618,7 @@ class CallkitNotificationManager(
             smallIcon = R.drawable.ic_video
         } else {
             if (smallIcon >= 0) {
-                smallIcon = R.drawable.ic_accept
+                smallIcon = R.drawable.ic_notification_logo
             }
         }
         notificationOngoingBuilder?.setSmallIcon(smallIcon)

@@ -26,14 +26,17 @@
                 android:id="@+id/tvNameCaller"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:textAppearance="@style/TextAppearance.Compat.Notification.Title"
                 android:textSize="@dimen/size_text_action" />
-
 
             <TextView
                 android:id="@+id/tvNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:textAppearance="@style/TextAppearance.Compat.Notification.Line2"
                 android:textSize="@dimen/size_text_action" />
 
@@ -70,8 +73,7 @@
             android:textColor="@color/button_text_decline"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:fontFamily="sans-serif"
-            android:elevation="2dp" />
+            android:fontFamily="sans-serif" />
 
         <TextView
             android:id="@+id/tvDecline"
@@ -96,8 +98,7 @@
             android:textColor="@color/button_text_accept"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:fontFamily="sans-serif"
-            android:elevation="2dp" />
+            android:fontFamily="sans-serif" />
 
         <TextView
             android:id="@+id/tvAccept"

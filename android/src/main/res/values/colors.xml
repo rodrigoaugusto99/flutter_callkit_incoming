@@ -11,5 +11,5 @@
     
     <color name="button_border_yellow">#FBB821</color>
     <color name="button_text_decline">#647A84</color>
-    <color name="button_text_accept">#000000</color>
+    <color name="button_text_accept">#FFFFFF</color>
 </resources>
