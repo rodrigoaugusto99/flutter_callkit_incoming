@@ -5,6 +5,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- ===== VIEWS NECESSÁRIAS PARA O PLUGIN (ESCONDIDAS) ===== -->
+
+    <TextView
+        android:id="@+id/tvNameCaller"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvNumber"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/ivAvatar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone" />
+
+    <!-- versões antigas usam estes IDs nos botões -->
+    <ImageView
+        android:id="@+id/ivAccept"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/ivDecline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone" />
+
+
+    <!-- ===== SEU LAYOUT PERSONALIZADO ===== -->
+
     <!-- FUNDO -->
     <ImageView
         android:id="@+id/ivBackground"
