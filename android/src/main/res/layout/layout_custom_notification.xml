@@ -56,7 +56,7 @@
         <TextView
             android:id="@+id/llDecline"
             android:layout_width="0dp"
-            android:layout_height="30dp"
+            android:layout_height="20dp"
             android:layout_weight="1"
             android:background="@drawable/bg_button_decline"
             android:clickable="true"
@@ -81,7 +81,7 @@
         <TextView
             android:id="@+id/llAccept"
             android:layout_width="0dp"
-            android:layout_height="30dp"
+            android:layout_height="20dp"
             android:layout_weight="1"
             android:background="@drawable/bg_button_accept"
             android:clickable="true"
