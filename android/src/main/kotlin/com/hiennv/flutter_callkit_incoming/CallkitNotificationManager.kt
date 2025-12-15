@@ -281,8 +281,9 @@ class CallkitNotificationManager(
                 }
 
                 notificationBuilder?.setStyle(NotificationCompat.DecoratedCustomViewStyle())
+                notificationBuilder?.setCustomContentView(notificationSmallViews)
                 notificationBuilder?.setCustomBigContentView(notificationViews)
-                notificationBuilder?.setCustomHeadsUpContentView(notificationViews)
+                notificationBuilder?.setCustomHeadsUpContentView(notificationSmallViews)
             }
         } else {
             notificationBuilder?.setContentText(
